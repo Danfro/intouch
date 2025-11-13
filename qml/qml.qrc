@@ -1,0 +1,30 @@
+<RCC>
+    <qresource prefix="/">
+        <file>Main.qml</file>
+        <file>components/CategoryListItem.qml</file>
+        <file>components/PostListItem.qml</file>
+        <file>components/TopicListItem.qml</file>
+        <file>components/UserPictureShape.qml</file>
+        <file>icons/fa-android.svg</file>
+        <file>icons/fa-comment-o.svg</file>
+        <file>icons/fa-comments.svg</file>
+        <file>icons/fa-comments-o.svg</file>
+        <file>icons/fa-desktop.svg</file>
+        <file>icons/fa-mobile-phone.svg</file>
+        <file>icons/fa-nbb-none.svg</file>
+        <file>icons/fa-newspaper-o.svg</file>
+        <file>icons/fa-paint-brush.svg</file>
+        <file>icons/fa-question-circle.svg</file>
+        <file>icons/fa-scissors.svg</file>
+        <file>icons/fa-square.svg</file>
+        <file>icons/fa-terminal.svg</file>
+        <file>icons/fa-wrench.svg</file>
+        <file>icons/logo.svg</file>
+        <file>pages/AboutPage.qml</file>
+        <file>pages/CategoryPage.qml</file>
+        <file>pages/MainPage.qml</file>
+        <file>pages/TopicPage.qml</file>
+        <file>pages/SearchPage.qml</file>
+        <file>pages/SettingsPage.qml</file>
+    </qresource>
+</RCC>

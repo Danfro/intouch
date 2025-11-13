@@ -1,0 +1,15 @@
+{
+    "name": "intouch.sanderklootwijk",
+    "description": "Native app to browse the UBports Forum",
+    "architecture": "@CLICK_ARCH@",
+    "title": "InTouch",
+    "hooks": {
+        "intouch": {
+            "apparmor": "intouch.apparmor",
+            "desktop":  "intouch.desktop"
+        }
+    },
+    "version": "1.0.0",
+    "maintainer": "Sander Klootwijk <sander.klootwijk@tutanota.com>",
+    "framework" : "@CLICK_FRAMEWORK@"
+}
