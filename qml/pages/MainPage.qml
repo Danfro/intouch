@@ -62,11 +62,6 @@ Page {
 
             actions: [
                 Action {
-                    iconName: "toolkit_input-search"
-                    text: i18n.tr("Search")
-                    onTriggered: pageStack.push(searchPage)
-                },
-                Action {
                     iconName: "settings"
                     text: i18n.tr("Settings")
                     onTriggered: pageStack.push(settingsPage)
@@ -75,6 +70,11 @@ Page {
                     iconName: "info"
                     text: i18n.tr("About")
                     onTriggered: pageStack.push(aboutPage)
+                },
+                Action {
+                    iconName: "toolkit_input-search"
+                    text: i18n.tr("Search")
+                    onTriggered: pageStack.push(searchPage)
                 }
             ]
         }
