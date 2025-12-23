@@ -36,7 +36,7 @@ Page {
 
     Connections {
         target: Connectivity
-        
+
         onStatusChanged: {
             if (Connectivity.status == NetworkingStatus.Online) {
                 if (mainPageHeaderSections.selectedIndex == 0) {
@@ -65,11 +65,6 @@ Page {
                     iconName: "settings"
                     text: i18n.tr("Settings")
                     onTriggered: pageStack.push(settingsPage)
-                },
-                Action {
-                    iconName: "info"
-                    text: i18n.tr("About")
-                    onTriggered: pageStack.push(aboutPage)
                 },
                 Action {
                     iconName: "toolkit_input-search"
