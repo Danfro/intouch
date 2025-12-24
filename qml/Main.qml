@@ -31,7 +31,7 @@ MainView {
     height: units.gu(75)
 
     // Version
-    property string version: "1.0.0"
+    property string version: "1.1.0"
 
     theme.name: {
         switch (settings.theme) {
