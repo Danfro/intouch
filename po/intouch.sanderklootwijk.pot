@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: intouch.sanderklootwijk\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-23 20:49+0000\n"
+"POT-Creation-Date: 2026-01-01 19:43+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,35 +17,44 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../qml/Main.qml:110
+#: ../qml/Main.qml:132
 msgid "%1 seconds ago"
 msgstr ""
 
-#: ../qml/Main.qml:113
+#: ../qml/Main.qml:135
 msgid "one minute ago"
 msgstr ""
 
-#: ../qml/Main.qml:116
+#: ../qml/Main.qml:138
 msgid "%1 minutes ago"
 msgstr ""
 
-#: ../qml/Main.qml:119
+#: ../qml/Main.qml:141
 msgid "about one hour ago"
 msgstr ""
 
-#: ../qml/Main.qml:122
+#: ../qml/Main.qml:144
 msgid "about %1 hours ago"
 msgstr ""
 
-#: ../qml/Main.qml:125
+#: ../qml/Main.qml:147
 msgid "one day ago"
 msgstr ""
 
-#: ../qml/Main.qml:128
+#: ../qml/Main.qml:150
 msgid "%1 days ago"
 msgstr ""
 
-#: ../qml/pages/AboutPage.qml:27
+#: ../qml/components/PostListItem.qml:135 ../qml/pages/TopicPage.qml:273
+#: ../qml/pages/WebEngineViewPage.qml:70
+msgid "Reply"
+msgstr ""
+
+#: ../qml/components/PostListItem.qml:164
+msgid "Quote"
+msgstr ""
+
+#: ../qml/pages/AboutPage.qml:27 ../qml/pages/SettingsPage.qml:217
 msgid "About"
 msgstr ""
 
@@ -73,7 +82,7 @@ msgstr ""
 msgid "Home"
 msgstr ""
 
-#: ../qml/pages/MainPage.qml:58 ../qml/pages/SettingsPage.qml:149
+#: ../qml/pages/MainPage.qml:58 ../qml/pages/SettingsPage.qml:189
 msgid "Recent topics"
 msgstr ""
 
@@ -85,7 +94,7 @@ msgstr ""
 msgid "Search"
 msgstr ""
 
-#: ../qml/pages/MainPage.qml:82 ../qml/pages/SettingsPage.qml:149
+#: ../qml/pages/MainPage.qml:82 ../qml/pages/SettingsPage.qml:189
 msgid "Categories"
 msgstr ""
 
@@ -97,18 +106,56 @@ msgstr ""
 msgid "No results"
 msgstr ""
 
-#: ../qml/pages/SettingsPage.qml:53
-msgid "About page"
+#: ../qml/pages/SettingsPage.qml:66 ../qml/pages/WebEngineViewPage.qml:66
+msgid "Account"
 msgstr ""
 
-#: ../qml/pages/SettingsPage.qml:79
+#: ../qml/pages/SettingsPage.qml:84
+msgid "Login or manage your account"
+msgstr ""
+
+#: ../qml/pages/SettingsPage.qml:115
 msgid "Theme"
 msgstr ""
 
-#: ../qml/pages/SettingsPage.qml:100
+#: ../qml/pages/SettingsPage.qml:138
 msgid "System"
 msgstr ""
 
-#: ../qml/pages/SettingsPage.qml:128
+#: ../qml/pages/SettingsPage.qml:166
 msgid "Default tab on startup"
+msgstr ""
+
+#: ../qml/pages/SettingsPage.qml:235
+msgid "About page"
+msgstr ""
+
+#: ../qml/pages/TopicPage.qml:273
+msgid "Locked"
+msgstr ""
+
+#: ../qml/pages/WebEngineViewPage.qml:41
+msgid "Close"
+msgstr ""
+
+#: ../qml/pages/WebEngineViewPage.qml:51
+msgid "Back"
+msgstr ""
+
+#: ../qml/pages/WebEngineViewPage.qml:63 ../qml/pages/WebEngineViewPage.qml:321
+msgid "Login"
+msgstr ""
+
+#: ../qml/pages/WebEngineViewPage.qml:317
+msgid "Are you logged in?"
+msgstr ""
+
+#: ../qml/pages/WebEngineViewPage.qml:318
+msgid ""
+"To reply to this topic, please make sure you are logged in to your account. "
+"You can do this through the app settings or by using the login button below."
+msgstr ""
+
+#: ../qml/pages/WebEngineViewPage.qml:335
+msgid "Cancel"
 msgstr ""

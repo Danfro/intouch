@@ -22,14 +22,27 @@ import "../components"
 Page {
     id: topicPage
 
+    property bool initialLoadComplete: false
     property bool topicLoading: false
     property string topicSlug: ""
     property int currentPage: 0
     property int pageCount: 0
     property int currentPost: 0
+
+    property bool pinned: false
+    property bool locked: false
     property int postCount: 0
+    property int posterCount: 0
+    property int viewCount: 0
+    property int followerCount: 0
 
     Component.onCompleted: fetchTopic(topicSlug, 1);
+
+    onVisibleChanged: {
+        if (visible && initialLoadComplete) {
+            reloadTopic(topicSlug);
+        }
+    }
 
     header: PageHeader {
         id: topicPageHeader
@@ -58,12 +71,230 @@ Page {
         visible: topicLoading
 
         anchors {
-            top: topicPageHeader.bottom
+            top: topicHeader.bottom
             left: parent.left
             right: parent.right
         }
 
         indeterminate: true
+    }
+
+    Item {
+        id: topicHeader
+        
+        width: parent.width
+        height: units.gu(6)
+
+        anchors {
+            top: topicPageHeader.bottom
+            horizontalCenter: parent.horizontalCenter
+        }
+
+        Row {
+            height: parent.height
+
+            anchors {
+                left: parent.left
+                leftMargin: units.gu(2)
+                verticalCenter: parent.verticalCenter
+            }
+
+            Icon {
+                id: postCountIcon
+
+                visible: postCount > 0
+
+                width: units.gu(2)
+                height: units.gu(2)
+
+                anchors.verticalCenter: parent.verticalCenter
+                
+                name: "message"
+                color: theme.palette.normal.foregroundText
+            }
+
+            Item {
+                width: units.gu(0.75)
+                height: parent.height
+            }
+
+            Label {
+                id: postCountLabel
+
+                visible: postCount > 0
+
+                width: implicitWidth
+                height: implicitHeight
+
+                anchors.verticalCenter: parent.verticalCenter
+
+                text: formatCount(postCount)
+                
+                elide: Text.ElideRight
+
+                color: theme.palette.normal.foregroundText
+            }
+
+            Item {
+                width: units.gu(2)
+                height: parent.height
+            }
+
+            Icon {
+                id: posterCountIcon
+
+                visible: postCount > 0
+
+                width: units.gu(2)
+                height: units.gu(2)
+
+                anchors.verticalCenter: parent.verticalCenter
+                
+                name: "contact"
+                color: theme.palette.normal.foregroundText
+            }
+
+            Item {
+                width: units.gu(0.75)
+                height: parent.height
+            }
+
+            Label {
+                id: posterCountLabel
+
+                visible: postCount > 0
+
+                width: implicitWidth
+                height: implicitHeight
+
+                anchors.verticalCenter: parent.verticalCenter
+
+                text: formatCount(posterCount)
+                
+                elide: Text.ElideRight
+
+                color: theme.palette.normal.foregroundText
+            }
+
+            Item {
+                width: units.gu(2)
+                height: parent.height
+            }
+
+            Icon {
+                id: viewCountIcon
+
+                visible: viewCount > 0
+
+                width: units.gu(2)
+                height: units.gu(2)
+
+                anchors.verticalCenter: parent.verticalCenter
+                
+                name: "view-on"
+                color: theme.palette.normal.foregroundText
+            }
+
+            Item {
+                width: units.gu(0.75)
+                height: parent.height
+            }
+
+            Label {
+                id: viewCountLabel
+
+                visible: viewCount > 0
+
+                width: implicitWidth
+                height: implicitHeight
+
+                anchors.verticalCenter: parent.verticalCenter
+
+                text: formatCount(viewCount)
+                
+                elide: Text.ElideRight
+
+                color: theme.palette.normal.foregroundText
+            }
+
+            Item {
+                width: units.gu(2)
+                height: parent.height
+            }
+
+            Icon {
+                id: followerCountIcon
+
+                visible: followerCount > 0
+
+                width: units.gu(2)
+                height: units.gu(2)
+
+                anchors.verticalCenter: parent.verticalCenter
+                
+                name: "notification"
+                color: theme.palette.normal.foregroundText
+            }
+
+            Item {
+                width: units.gu(0.75)
+                height: parent.height
+            }
+
+            Label {
+                id: followerCountLabel
+
+                visible: followerCount > 0
+
+                width: implicitWidth
+                height: implicitHeight
+
+                anchors.verticalCenter: parent.verticalCenter
+
+                text: formatCount(followerCount)
+                
+                elide: Text.ElideRight
+
+                color: theme.palette.normal.foregroundText
+            }
+        }
+
+        ActionBar {
+            anchors {
+                top: parent.top
+                bottom: parent.bottom
+                right: parent.right
+                rightMargin: units.gu(1)
+            }
+
+            actions: [
+                Action {
+                    iconName: locked == 0 ? "mail-reply" : "lock"
+                    text: locked == 0 ? i18n.tr("Reply") : i18n.tr("Locked")
+                    enabled: locked == 0
+                    onTriggered: {
+                        webEngineViewPage.topicSlug = topicSlug;
+                        webEngineViewPage.replyPid = "0";
+                        webEngineViewPage.replyMode = "topicreply";
+                        webEngineViewPage.replyTriggered = false;
+                        webEngineViewPage.topicWebView.url = "https://forums.ubports.com/topic/" + topicSlug + "/" + currentPost + "#";
+                        pageStack.push(webEngineViewPage);
+                    }
+                }
+            ]
+        }
+
+        Rectangle {
+            width: parent.width
+            height: units.dp(1)
+
+            anchors {
+                bottom: parent.bottom
+                horizontalCenter: parent.horizontalCenter
+            }
+
+            color: theme.palette.normal.base
+        }
     }
 
     ListModel {
@@ -75,7 +306,7 @@ Page {
 
         anchors {
             fill: parent
-            topMargin: topicPageHeader.height
+            topMargin: topicPageHeader.height + topicHeader.height
             bottomMargin: paginationBar.height
         }
 
@@ -231,14 +462,19 @@ Page {
 
                     topicPageHeaderTitle.text = data.titleRaw;
                     currentPage = page;
+
+                    pinned = data.pinned;
+                    locked = data.locked;
                     pageCount = data.pagination.pageCount;
                     postCount = data.postcount;
+                    posterCount = data.postercount;
+                    viewCount = data.viewcount;
+                    followerCount = data.followercount;
 
                     for (let i = 0; i < posts.length; i++) {
                         topicListModel.append({
                             "username": posts[i].user.username,
                             "picture": posts[i].user.picture == null ? "" : "https://forums.ubports.com/" + posts[i].user.picture,
-                            "username": posts[i].user.username,
                             "bgColor": posts[i].user["icon:bgColor"],
                             "usernameText": posts[i].user["icon:text"], 
                             "content": posts[i].content.replace(/<img /g, '<img width="' + units.gu(35) + '" height="auto" ').replace(/class="not-responsive emoji /g, ' width="' + units.gu(1.75) + '" height="auto" class="not-responsive emoji ').replace(/<a /g, '<a style="color: ' + theme.palette.normal.activity + ';"').replace(/src="\/assets/g, 'src="https://forums.ubports.com/assets'),
@@ -246,7 +482,8 @@ Page {
                             "postIndex": posts[i].index,
                             "votes": posts[i].votes,
                             "pid": posts[i].pid,
-                            "slug": posts[i].slug
+                            "slug": posts[i].slug,
+                            "locked": data.locked
                         });
                     }
                     
@@ -258,6 +495,7 @@ Page {
                     }
 
                     topicLoading = false;
+                    initialLoadComplete = true;
 
                     return;
 
@@ -270,5 +508,51 @@ Page {
         };
 
         xhr.send();
+    }
+
+    function reloadTopic(slug) {
+        if (topicLoading || !initialLoadComplete) {
+            return;
+        }
+
+        var xhr = new XMLHttpRequest;
+        xhr.open("GET", "https://forums.ubports.com/api/topic/" + slug + "?page=1", true);
+
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState !== XMLHttpRequest.DONE) return;
+
+            if (xhr.status !== 200) {
+                console.log("Reload check failed:", xhr.status);
+                return;
+            }
+
+            console.log("Checking if reload is needed");
+
+            let data = JSON.parse(xhr.responseText);
+           
+            const newPageCount = data.pagination.pageCount;
+            const newPostCount = data.postcount;
+
+            if (newPageCount !== pageCount || newPostCount !== postCount) {
+                console.log("Topic updated, reloading");
+
+                topicListModel.clear();
+                fetchTopic(slug, 1);
+                return;
+            }
+
+            console.log("No new posts found, not reloading");
+        };
+
+        xhr.send();
+    }
+
+    // Numbers above 999 are returned as e.g. 1k
+    function formatCount(count) {
+        if (count < 1000) return count.toString();
+
+        const k = count / 1000;
+
+        return (k % 1 === 0 ? k : k.toFixed(1)) + 'k';
     }
 }

@@ -18,6 +18,7 @@ import QtQuick 2.7
 import Lomiri.Components 1.3
 import QtQuick.Layouts 1.3
 import Qt.labs.settings 1.0
+import QtWebEngine 1.11
 import "components"
 import "pages"
 
@@ -31,7 +32,7 @@ MainView {
     height: units.gu(75)
 
     // Version
-    property string version: "1.1.0"
+    property string version: "1.2.0"
 
     theme.name: {
         switch (settings.theme) {
@@ -52,11 +53,14 @@ MainView {
     PageStack {
         id: pageStack
 
-        anchors.fill: parent
+        anchors {
+            fill: parent
+            bottomMargin: LomiriApplication.inputMethod.visible ? LomiriApplication.inputMethod.keyboardRectangle.height/(units.gridUnit / 8) : 0
+        }
 
         Component.onCompleted: push(mainPage);
     }
-
+    
     // Pages
     MainPage {
         id: mainPage
@@ -82,12 +86,30 @@ MainView {
         visible: false
     }
 
+    WebEngineViewPage {
+        id: webEngineViewPage
+        
+        anchors.fill: parent
+
+        visible: false
+    }
+
     AboutPage {
         id: aboutPage
 
         anchors.fill: parent
         
         visible: false
+    }
+
+    // WebEngineProfile
+    WebEngineProfile {
+        id: forumProfile
+
+        storageName: "ForumProfile"
+
+        persistentCookiesPolicy: WebEngineProfile.AllowPersistentCookies
+        offTheRecord: false
     }
 
     // Convert an ISO data/time string into a readable localized string

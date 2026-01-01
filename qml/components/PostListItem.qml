@@ -118,6 +118,69 @@ ListItem {
             }
 
             MouseArea {
+                id: replyLabel
+
+                width: replyLabelText.width + units.gu(4)
+                height: units.gu(4)
+
+                visible: locked == 0
+
+                Label {
+                    id: replyLabelText
+
+                    width: implicitWidth
+
+                    anchors.centerIn: parent
+
+                    text: i18n.tr("Reply")
+                    color: theme.palette.normal.activity
+                }
+
+                onClicked: {
+                    webEngineViewPage.topicSlug = topicSlug;
+                    webEngineViewPage.replyPid = pid;
+                    webEngineViewPage.replyMode = "reply";
+                    webEngineViewPage.replyTriggered = false;
+                    webEngineViewPage.topicWebView.url = "https://forums.ubports.com/topic/" + topicSlug + "/" + (index + 1) + "#";
+                    pageStack.push(webEngineViewPage);
+                }
+            }
+
+            MouseArea {
+                id: quoteLabel
+
+                width: replyLabelText.width + units.gu(2)
+                height: units.gu(4)
+
+                visible: locked == 0
+
+                Label {
+                    id: quoteLabelText
+
+                    width: implicitWidth
+
+                    anchors.centerIn: parent
+
+                    text: i18n.tr("Quote")
+                    color: theme.palette.normal.activity
+                }
+
+                onClicked: {
+                    webEngineViewPage.topicSlug = topicSlug;
+                    webEngineViewPage.replyPid = pid;
+                    webEngineViewPage.replyMode = "quote";
+                    webEngineViewPage.replyTriggered = false;
+                    webEngineViewPage.topicWebView.url = "https://forums.ubports.com/topic/" + topicSlug + "/" + (index + 1) + "#";
+                    pageStack.push(webEngineViewPage);
+                }
+            }
+
+            Item {
+                width: units.gu(2)
+                height: units.gu(4)
+            }
+
+            MouseArea {
                 id: voteUpButton
 
                 width: units.gu(2)
@@ -144,7 +207,7 @@ ListItem {
 
                 anchors.verticalCenter: parent.verticalCenter
 
-                color: theme.palette.normal.activity
+                color: theme.palette.normal.baseText
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
                 textSize: Label.Small
@@ -189,7 +252,7 @@ ListItem {
 
                     anchors.centerIn: parent
 
-                    color: theme.palette.normal.baseText
+                    color: theme.palette.normal.foregroundText
                     name: "stock_link"
                 }
             }

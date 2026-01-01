@@ -44,16 +44,52 @@ Page {
             width: settingsPage.width
 
             ListItem {
-                id: aboutListItem
+                id: accountTitle
 
-                // height: units.gu(4)
+                height: units.gu(6.25)
+
+                divider.colorFrom: theme.palette.normal.background
+                divider.colorTo: theme.palette.normal.background
+
+                Label {
+                    id: accountTitleLabel
+
+                    width: parent.width - units.gu(4)
+
+                    anchors {
+                        bottom: parent.bottom
+                        bottomMargin: units.gu(1.25)
+                        left: parent.left
+                        leftMargin: units.gu(2)
+                    }
+
+                    text: i18n.tr("Account") + ":"
+
+                    color: theme.palette.normal.backgroundSecondaryText
+                    elide: Text.ElideRight
+                    font.bold: true
+                }
+            }
+
+            ListItem {
+                id: accountListItem
+
+                height: units.gu(6)
 
                 ListItemLayout {
-                        id: layoutAbout
-                        title.text : i18n.tr("About page")
-                        ProgressionSlot {color: theme.palette.normal.baseText; }
-                    }
-                onClicked: pageStack.push(aboutPage)
+                    id: accountAbout
+
+                    anchors.verticalCenter: parent.verticalCenter
+
+                    title.text : i18n.tr("Login or manage your account")
+                    ProgressionSlot { color: theme.palette.normal.baseText; }
+                }
+
+                onClicked: {
+                    webEngineViewPage.accountMode = true;
+                    webEngineViewPage.accountWebView.url = "https://forums.ubports.com/login";
+                    pageStack.push(webEngineViewPage);
+                }
             }
 
             ListItem {
@@ -78,7 +114,9 @@ Page {
 
                     text: i18n.tr("Theme") + ":"
 
+                    color: theme.palette.normal.backgroundSecondaryText
                     elide: Text.ElideRight
+                    font.bold: true
                 }
             }
 
@@ -127,7 +165,9 @@ Page {
 
                     text: i18n.tr("Default tab on startup") + ":"
 
+                    color: theme.palette.normal.backgroundSecondaryText
                     elide: Text.ElideRight
+                    font.bold: true
                 }
             }
 
@@ -152,6 +192,51 @@ Page {
 
                     Component.onCompleted: selectedIndex = settings.defaultTab
                 }
+            }
+
+            ListItem {
+                id: aboutTitle
+
+                height: units.gu(6.25)
+
+                divider.colorFrom: theme.palette.normal.background
+                divider.colorTo: theme.palette.normal.background
+
+                Label {
+                    id: aboutTitleLabel
+
+                    width: parent.width - units.gu(4)
+
+                    anchors {
+                        bottom: parent.bottom
+                        bottomMargin: units.gu(1.25)
+                        left: parent.left
+                        leftMargin: units.gu(2)
+                    }
+
+                    text: i18n.tr("About") + ":"
+
+                    color: theme.palette.normal.backgroundSecondaryText
+                    elide: Text.ElideRight
+                    font.bold: true
+                }
+            }
+
+            ListItem {
+                id: aboutListItem
+
+                height: units.gu(6)
+
+                ListItemLayout {
+                    id: layoutAbout
+
+                    anchors.verticalCenter: parent.verticalCenter
+
+                    title.text : i18n.tr("About page")
+                    ProgressionSlot { color: theme.palette.normal.baseText; }
+                }
+
+                onClicked: pageStack.push(aboutPage)
             }
         }
     }

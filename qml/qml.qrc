@@ -23,11 +23,16 @@
         <file>icons/fa-terminal.svg</file>
         <file>icons/fa-wrench.svg</file>
         <file>icons/logo.svg</file>
+        <file>js/account-dark.js</file>
+        <file>js/account.js</file>
+        <file>js/topic-dark.js</file>
+        <file>js/topic.js</file>
         <file>pages/AboutPage.qml</file>
         <file>pages/CategoryPage.qml</file>
         <file>pages/MainPage.qml</file>
-        <file>pages/TopicPage.qml</file>
         <file>pages/SearchPage.qml</file>
         <file>pages/SettingsPage.qml</file>
+        <file>pages/TopicPage.qml</file>
+        <file>pages/WebEngineViewPage.qml</file>
     </qresource>
 </RCC>
