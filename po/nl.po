@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: intouch.sanderklootwijk\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-23 20:49+0000\n"
-"PO-Revision-Date: 2025-12-24 12:11+0100\n"
+"POT-Creation-Date: 2026-01-01 19:43+0000\n"
+"PO-Revision-Date: 2026-01-01 20:56+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -18,35 +18,44 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.4.2\n"
 
-#: ../qml/Main.qml:110
+#: ../qml/Main.qml:132
 msgid "%1 seconds ago"
 msgstr "%1 seconden geleden"
 
-#: ../qml/Main.qml:113
+#: ../qml/Main.qml:135
 msgid "one minute ago"
 msgstr "een minuut geleden"
 
-#: ../qml/Main.qml:116
+#: ../qml/Main.qml:138
 msgid "%1 minutes ago"
 msgstr "%1 minuten geleden"
 
-#: ../qml/Main.qml:119
+#: ../qml/Main.qml:141
 msgid "about one hour ago"
 msgstr "ongeveer een uur geleden"
 
-#: ../qml/Main.qml:122
+#: ../qml/Main.qml:144
 msgid "about %1 hours ago"
 msgstr "ongeveer %1 uur geleden"
 
-#: ../qml/Main.qml:125
+#: ../qml/Main.qml:147
 msgid "one day ago"
 msgstr "een dag geleden"
 
-#: ../qml/Main.qml:128
+#: ../qml/Main.qml:150
 msgid "%1 days ago"
 msgstr "%1 dagen geleden"
 
-#: ../qml/pages/AboutPage.qml:27
+#: ../qml/components/PostListItem.qml:135 ../qml/pages/TopicPage.qml:273
+#: ../qml/pages/WebEngineViewPage.qml:70
+msgid "Reply"
+msgstr "Reageren"
+
+#: ../qml/components/PostListItem.qml:164
+msgid "Quote"
+msgstr "Citeren"
+
+#: ../qml/pages/AboutPage.qml:27 ../qml/pages/SettingsPage.qml:217
 msgid "About"
 msgstr "Over"
 
@@ -74,7 +83,7 @@ msgstr "Onderwerpen"
 msgid "Home"
 msgstr "Home"
 
-#: ../qml/pages/MainPage.qml:58 ../qml/pages/SettingsPage.qml:149
+#: ../qml/pages/MainPage.qml:58 ../qml/pages/SettingsPage.qml:189
 msgid "Recent topics"
 msgstr "Recente onderwerpen"
 
@@ -86,7 +95,7 @@ msgstr "Instellingen"
 msgid "Search"
 msgstr "Zoeken"
 
-#: ../qml/pages/MainPage.qml:82 ../qml/pages/SettingsPage.qml:149
+#: ../qml/pages/MainPage.qml:82 ../qml/pages/SettingsPage.qml:189
 msgid "Categories"
 msgstr "Categorieën"
 
@@ -98,18 +107,58 @@ msgstr "Recent"
 msgid "No results"
 msgstr "Geen resultaten"
 
-#: ../qml/pages/SettingsPage.qml:53
-msgid "About page"
-msgstr "Over deze app"
+#: ../qml/pages/SettingsPage.qml:66 ../qml/pages/WebEngineViewPage.qml:66
+msgid "Account"
+msgstr "Account"
 
-#: ../qml/pages/SettingsPage.qml:79
+#: ../qml/pages/SettingsPage.qml:84
+msgid "Login or manage your account"
+msgstr "Log in of beheer je account"
+
+#: ../qml/pages/SettingsPage.qml:115
 msgid "Theme"
 msgstr "Thema"
 
-#: ../qml/pages/SettingsPage.qml:100
+#: ../qml/pages/SettingsPage.qml:138
 msgid "System"
 msgstr "Systeem"
 
-#: ../qml/pages/SettingsPage.qml:128
+#: ../qml/pages/SettingsPage.qml:166
 msgid "Default tab on startup"
 msgstr "Standaardtabblad bij opstarten"
+
+#: ../qml/pages/SettingsPage.qml:235
+msgid "About page"
+msgstr "Over deze app"
+
+#: ../qml/pages/TopicPage.qml:273
+msgid "Locked"
+msgstr "Gesloten"
+
+#: ../qml/pages/WebEngineViewPage.qml:41
+msgid "Close"
+msgstr "Sluiten"
+
+#: ../qml/pages/WebEngineViewPage.qml:51
+msgid "Back"
+msgstr "Terug"
+
+#: ../qml/pages/WebEngineViewPage.qml:63 ../qml/pages/WebEngineViewPage.qml:321
+msgid "Login"
+msgstr "Login"
+
+#: ../qml/pages/WebEngineViewPage.qml:317
+msgid "Are you logged in?"
+msgstr "Ben je ingelogd?"
+
+#: ../qml/pages/WebEngineViewPage.qml:318
+msgid ""
+"To reply to this topic, please make sure you are logged in to your account. "
+"You can do this through the app settings or by using the login button below."
+msgstr ""
+"Om op dit onderwerp te reageren, moet je ingelogd zijn op je account. Dit "
+"kun je doen via de app-instellingen of via onderstaande inlogknop."
+
+#: ../qml/pages/WebEngineViewPage.qml:335
+msgid "Cancel"
+msgstr "Annuleren"
