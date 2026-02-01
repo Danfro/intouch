@@ -25,6 +25,7 @@ Page {
     property bool initialLoadComplete: false
     property bool topicLoading: false
     property string topicSlug: ""
+    property var initialPostID
     property int currentPage: 0
     property int pageCount: 0
     property int currentPost: 0
@@ -481,8 +482,9 @@ Page {
                             "timestampISO": posts[i].timestampISO,
                             "postIndex": posts[i].index,
                             "votes": posts[i].votes,
-                            "pid": posts[i].pid,
+                            "postID": posts[i].pid,
                             "slug": posts[i].slug,
+                            "deleted": posts[i].deleted,
                             "locked": data.locked
                         });
                     }
@@ -495,6 +497,16 @@ Page {
                     }
 
                     topicLoading = false;
+
+                    if (!initialLoadComplete && initialPostID !== undefined) {
+                        for (var i = 0; i < topicListView.count; i++) {
+                            if (topicListView.model.get(i).postID === initialPostID) {
+                                topicListView.positionViewAtIndex(i, ListView.Beginning);
+                                break;
+                            }
+                        }
+                    }
+                    
                     initialLoadComplete = true;
 
                     return;

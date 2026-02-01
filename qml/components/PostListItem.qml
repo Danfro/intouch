@@ -123,7 +123,7 @@ ListItem {
                 width: replyLabelText.width + units.gu(4)
                 height: units.gu(4)
 
-                visible: locked == 0
+                visible: locked == 0 && deleted == 0
 
                 Label {
                     id: replyLabelText
@@ -138,7 +138,7 @@ ListItem {
 
                 onClicked: {
                     webEngineViewPage.topicSlug = topicSlug;
-                    webEngineViewPage.replyPid = pid;
+                    webEngineViewPage.replyPid = postID;
                     webEngineViewPage.replyMode = "reply";
                     webEngineViewPage.replyTriggered = false;
                     webEngineViewPage.topicWebView.url = "https://forums.ubports.com/topic/" + topicSlug + "/" + (index + 1) + "#";
@@ -152,7 +152,7 @@ ListItem {
                 width: replyLabelText.width + units.gu(2)
                 height: units.gu(4)
 
-                visible: locked == 0
+                visible: locked == 0 && deleted == 0
 
                 Label {
                     id: quoteLabelText
@@ -167,7 +167,7 @@ ListItem {
 
                 onClicked: {
                     webEngineViewPage.topicSlug = topicSlug;
-                    webEngineViewPage.replyPid = pid;
+                    webEngineViewPage.replyPid = postID;
                     webEngineViewPage.replyMode = "quote";
                     webEngineViewPage.replyTriggered = false;
                     webEngineViewPage.topicWebView.url = "https://forums.ubports.com/topic/" + topicSlug + "/" + (index + 1) + "#";
@@ -244,7 +244,7 @@ ListItem {
                 width: units.gu(2)
                 height: units.gu(4)
 
-                onClicked: Qt.openUrlExternally("https://forums.ubports.com/post/" + pid);
+                onClicked: Qt.openUrlExternally("https://forums.ubports.com/post/" + postID);
 
                 Icon {
                     width: units.gu(1.75)

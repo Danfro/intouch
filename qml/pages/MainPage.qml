@@ -26,6 +26,12 @@ Page {
     property bool categoriesLoading: false
     property bool recentTopicsLoading: false
 
+    onVisibleChanged: {
+        if (visible && loggedIn) {
+            notificationsPage.fetchNotifications(1);
+        }
+    }
+
     Component.onCompleted: {
         mainPageHeaderSections.selectedIndex = settings.defaultTab;
 
@@ -67,6 +73,24 @@ Page {
                     onTriggered: pageStack.push(settingsPage)
                 },
                 Action {
+                    visible: loggedIn
+                    iconSource: {
+                        if (notificationsPage.unread) {
+                            if (theme.name == "Lomiri.Components.Themes.SuruDark") {
+                                "../icons/notification-unread-dark.svg"
+                            }
+                            else {
+                                "../icons/notification-unread-light.svg"
+                            }
+                        }
+                        else {
+                            "../icons/notification.svg"
+                        }
+                    }
+                    text: i18n.tr("Notifications")
+                    onTriggered: pageStack.push(notificationsPage);
+                },
+                Action {
                     iconName: "toolkit_input-search"
                     text: i18n.tr("Search")
                     onTriggered: pageStack.push(searchPage)
@@ -102,7 +126,7 @@ Page {
     }
 
     ProgressBar {
-        visible: categoriesLoading || recentTopicsLoading
+        visible: categoriesLoading || recentTopicsLoading 
 
         anchors {
             top: mainPageHeader.bottom
@@ -256,6 +280,7 @@ Page {
                             "username": topics[i].user.username,
                             "bgColor": topics[i].user["icon:bgColor"],
                             "usernameText": topics[i].user["icon:text"],
+                            "topicID": topics[i].tid,
                             "slug": topics[i].slug.toString()
                         });
                     }

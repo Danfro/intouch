@@ -154,8 +154,12 @@ ListItem {
     }
         
     onClicked: {
-        // Avoid opening deleted posts
+        // Avoid opening deleted topics
         if (deleted	== 0) {
+            if (root.loggedIn) {
+                markTopicAsRead(topicID);
+            }
+
             pageStack.push(Qt.resolvedUrl("/pages/TopicPage.qml"), { topicSlug: slug });
         }
     }

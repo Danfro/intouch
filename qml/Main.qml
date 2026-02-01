@@ -27,13 +27,23 @@ MainView {
     objectName: 'mainView'
     applicationName: 'intouch.sanderklootwijk'
     automaticOrientation: true
+    anchorToKeyboard: true
     
     width: units.gu(45)
     height: units.gu(75)
 
     // Version
-    property string version: "1.2.0"
+    property string version: "1.3.0"
 
+    // App status and login information
+    property bool loggedIn: false
+
+    onLoggedInChanged: {
+        if (loggedIn) {
+            notificationsPage.fetchNotifications(1);
+        }
+    }
+    
     theme.name: {
         switch (settings.theme) {
             case 0: return "";
@@ -53,10 +63,7 @@ MainView {
     PageStack {
         id: pageStack
 
-        anchors {
-            fill: parent
-            bottomMargin: LomiriApplication.inputMethod.visible ? LomiriApplication.inputMethod.keyboardRectangle.height/(units.gridUnit / 8) : 0
-        }
+        anchors.fill: parent
 
         Component.onCompleted: push(mainPage);
     }
@@ -94,6 +101,14 @@ MainView {
         visible: false
     }
 
+    NotificationsPage {
+        id: notificationsPage
+        
+        anchors.fill: parent
+
+        visible: false
+    }
+
     AboutPage {
         id: aboutPage
 
@@ -110,6 +125,59 @@ MainView {
 
         persistentCookiesPolicy: WebEngineProfile.AllowPersistentCookies
         offTheRecord: false
+    }
+
+    // Fetch and parse login status
+    function fetchLoginStatus() {
+        webEngineViewPage.accountWebView.runJavaScript(`
+                    (function() {
+                        var xhr = new XMLHttpRequest;
+                        xhr.open("GET", "https://forums.ubports.com/api/unread", true);
+
+                        xhr.onreadystatechange = function() {
+                            if (xhr.readyState === XMLHttpRequest.DONE) {
+                                console.warn(xhr.responseText);
+                            }
+                        };
+
+                        xhr.send();
+                    })();
+                `);
+    }
+
+    // Parse and update login status
+    function parseLoginStatus(msg) {
+        if (msg.includes("\"loggedIn\":true")) {
+            root.loggedIn = true;
+        }
+        else {
+            root.loggedIn = false;
+        }
+        console.log("Login status is: " + root.loggedIn);
+    }
+
+    // Mark topic as read by fetching it in the logged in webview
+    function markTopicAsRead(topicID) {
+        webEngineViewPage.accountWebView.runJavaScript(`
+            (async () => {
+                try {
+                    await fetch("https://forums.ubports.com/api/topic/${topicID}", {
+                        "credentials": "include",
+                        "headers": {
+                            "Accept": "*/*",
+                            "X-Requested-With": "XMLHttpRequest",
+                            "Sec-Fetch-Dest": "empty",
+                            "Sec-Fetch-Mode": "cors",
+                            "Sec-Fetch-Site": "same-origin"
+                        },
+                        "method": "GET",
+                        "mode": "cors"
+                    });
+                } catch (error) {
+                    console.error('Fetch error:', error);
+                }
+            })();
+        `);
     }
 
     // Convert an ISO data/time string into a readable localized string

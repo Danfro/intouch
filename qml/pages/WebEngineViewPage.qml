@@ -50,8 +50,8 @@ Page {
                 iconName: "back"
                 text: i18n.tr("Back")
                 onTriggered: {
+                    webEngineViewPage.accountWebView.url = "https://forums.ubports.com/login";
                     accountMode = false;
-                    accountWebView.url = "about:blank";
                     pageStack.pop();
                 }
             }
@@ -86,9 +86,10 @@ Page {
 
         opacity: loadProgress == 100 ? 1 : 0
 
-        url: ""
+        url: "https://forums.ubports.com/login"
 
         profile: forumProfile
+        zoomFactor: units.gu(1) / 8
 
         userScripts: [
             WebEngineScript {
@@ -97,6 +98,8 @@ Page {
                 worldId: WebEngineScript.UserWorld
             }
         ]
+
+        onLoadingChanged: fetchLoginStatus();
 
         onUrlChanged: {
             if (ignoreUrlChanged) {
@@ -123,7 +126,21 @@ Page {
                 accountWebView.url = "https://forums.ubports.com/login";
                 return;
             }
-        }        
+        }
+
+        onJavaScriptConsoleMessage: function(level, msg, line, source) {
+            if (level == 1) {
+                if (msg.includes("{\"notifications\"")) {
+                    notificationsPage.parseNotifications(msg);
+                }
+                if (msg.includes("loggedInUser")) {
+                    parseLoginStatus(msg);
+                }
+                if (msg.includes("not-authorised")) {
+                    parseLoginStatus(msg);
+                }
+            }
+        }
     }
 
     WebEngineView {
@@ -144,6 +161,7 @@ Page {
         url: ""
 
         profile: forumProfile
+        zoomFactor: units.gu(1) / 8
 
         onLoadingChanged: {
             if (accountMode) {
@@ -155,6 +173,8 @@ Page {
             if (loadRequest.status === WebEngineLoadRequest.LoadSucceededStatus && !replyTriggered) {
                 triggerReplyTimer.start();
             }
+
+            fetchLoginStatus();
         }
 
         Timer {

@@ -137,6 +137,7 @@ Page {
                             "username": topics[i].user.username,
                             "bgColor": topics[i].user["icon:bgColor"],
                             "usernameText": topics[i].user["icon:text"],
+                            "topicID": topics[i].tid,
                             "slug": topics[i].slug.toString()
                         });
                     }
