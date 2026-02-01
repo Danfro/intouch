@@ -1,0 +1,168 @@
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the intouch.sanderklootwijk package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Khmelyauskas Alexander Eduardovich
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: intouch.sanderklootwijk\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-02-01 14:56+0000\n"
+"PO-Revision-Date: 2026-02-01 15:57+0100\n"
+"Last-Translator: JasonWalt Bab@\n"
+"Language-Team: Russian\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.2\n"
+
+#: ../qml/Main.qml:200
+msgid "%1 seconds ago"
+msgstr "%1 секунд назад"
+
+#: ../qml/Main.qml:203
+msgid "one minute ago"
+msgstr "одна минута спустя"
+
+#: ../qml/Main.qml:206
+msgid "%1 minutes ago"
+msgstr "%1 минут спустя"
+
+#: ../qml/Main.qml:209
+msgid "about one hour ago"
+msgstr "около одного часа спустя"
+
+#: ../qml/Main.qml:212
+msgid "about %1 hours ago"
+msgstr "около %1 часов спустя"
+
+#: ../qml/Main.qml:215
+msgid "one day ago"
+msgstr "один лень спустя"
+
+#: ../qml/Main.qml:218
+msgid "%1 days ago"
+msgstr "%1 дней спустя"
+
+#: ../qml/components/PostListItem.qml:135 ../qml/pages/TopicPage.qml:274
+#: ../qml/pages/WebEngineViewPage.qml:70
+msgid "Reply"
+msgstr "Ответить"
+
+#: ../qml/components/PostListItem.qml:164
+msgid "Quote"
+msgstr "Упомянуть"
+
+#: ../qml/pages/AboutPage.qml:27 ../qml/pages/SettingsPage.qml:217
+msgid "About"
+msgstr "Об этом"
+
+#: ../qml/pages/AboutPage.qml:80 intouch.desktop.in.h:1
+msgid "InTouch"
+msgstr "ВКасании"
+
+#: ../qml/pages/AboutPage.qml:85
+msgid "Version"
+msgstr "Версия"
+
+#: ../qml/pages/AboutPage.qml:102
+msgid "Source code"
+msgstr "Исходный код"
+
+#: ../qml/pages/AboutPage.qml:103
+msgid "Report issues"
+msgstr "Заявить о проблемах"
+
+#: ../qml/pages/CategoryPage.qml:87
+msgid "Topics"
+msgstr "Темы"
+
+#: ../qml/pages/MainPage.qml:64
+msgid "Home"
+msgstr "Дома"
+
+#: ../qml/pages/MainPage.qml:64 ../qml/pages/SettingsPage.qml:189
+msgid "Recent topics"
+msgstr "Недавние темы"
+
+#: ../qml/pages/MainPage.qml:72 ../qml/pages/SettingsPage.qml:27
+msgid "Settings"
+msgstr "Настройки"
+
+#: ../qml/pages/MainPage.qml:90 ../qml/pages/NotificationsPage.qml:35
+msgid "Notifications"
+msgstr ""
+
+#: ../qml/pages/MainPage.qml:95 ../qml/pages/SearchPage.qml:44
+msgid "Search"
+msgstr "Искать"
+
+#: ../qml/pages/MainPage.qml:106 ../qml/pages/SettingsPage.qml:189
+msgid "Categories"
+msgstr "Категории"
+
+#: ../qml/pages/MainPage.qml:109
+msgid "Recent"
+msgstr "Недавнее"
+
+#: ../qml/pages/SearchPage.qml:106
+msgid "No results"
+msgstr "Нет результатов"
+
+#: ../qml/pages/SettingsPage.qml:66 ../qml/pages/WebEngineViewPage.qml:66
+msgid "Account"
+msgstr "Учётная запись (Аккаунт)"
+
+#: ../qml/pages/SettingsPage.qml:84
+msgid "Login or manage your account"
+msgstr "Войди или правь со своим аккаунтом"
+
+#: ../qml/pages/SettingsPage.qml:115
+msgid "Theme"
+msgstr "Тема"
+
+#: ../qml/pages/SettingsPage.qml:138
+msgid "System"
+msgstr "Системная"
+
+#: ../qml/pages/SettingsPage.qml:166
+msgid "Default tab on startup"
+msgstr "Обычная вкладка при запуске"
+
+#: ../qml/pages/SettingsPage.qml:235
+msgid "About page"
+msgstr "Страница \"Об этом\""
+
+#: ../qml/pages/TopicPage.qml:274
+msgid "Locked"
+msgstr "Заблокировано"
+
+#: ../qml/pages/WebEngineViewPage.qml:41
+msgid "Close"
+msgstr "Закрыть"
+
+#: ../qml/pages/WebEngineViewPage.qml:51
+msgid "Back"
+msgstr "Назад"
+
+#: ../qml/pages/WebEngineViewPage.qml:63 ../qml/pages/WebEngineViewPage.qml:341
+msgid "Login"
+msgstr "Войти"
+
+#: ../qml/pages/WebEngineViewPage.qml:337
+msgid "Are you logged in?"
+msgstr "Вы вошли в эту систему?"
+
+#: ../qml/pages/WebEngineViewPage.qml:338
+msgid ""
+"To reply to this topic, please make sure you are logged in to your account. "
+"You can do this through the app settings or by using the login button below."
+msgstr ""
+"Чтобы ответить на эту тему, пожалуйста убедитесь что вы вошли в свой "
+"аккаунт. Вы можете сделать это через приложение настроек или использованием "
+"кнопки \"Войти\" под этим."
+
+#: ../qml/pages/WebEngineViewPage.qml:355
+msgid "Cancel"
+msgstr "Отмена"
