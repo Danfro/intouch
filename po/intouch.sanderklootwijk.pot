@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: intouch.sanderklootwijk\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-30 21:35+0000\n"
+"POT-Creation-Date: 2026-02-01 14:56+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,31 +17,31 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../qml/Main.qml:199
+#: ../qml/Main.qml:200
 msgid "%1 seconds ago"
 msgstr ""
 
-#: ../qml/Main.qml:202
+#: ../qml/Main.qml:203
 msgid "one minute ago"
 msgstr ""
 
-#: ../qml/Main.qml:205
+#: ../qml/Main.qml:206
 msgid "%1 minutes ago"
 msgstr ""
 
-#: ../qml/Main.qml:208
+#: ../qml/Main.qml:209
 msgid "about one hour ago"
 msgstr ""
 
-#: ../qml/Main.qml:211
+#: ../qml/Main.qml:212
 msgid "about %1 hours ago"
 msgstr ""
 
-#: ../qml/Main.qml:214
+#: ../qml/Main.qml:215
 msgid "one day ago"
 msgstr ""
 
-#: ../qml/Main.qml:217
+#: ../qml/Main.qml:218
 msgid "%1 days ago"
 msgstr ""
 
